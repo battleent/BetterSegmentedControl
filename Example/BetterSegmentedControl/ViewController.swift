@@ -59,17 +59,16 @@ class ViewController: UIViewController {
         // Control 4: Added as a subview
         let viewSegmentedControl = BetterSegmentedControl(
             frame: CGRect(x: 0.0, y: 332.0, width: view.bounds.width, height: 50.0),
-            titles: ["Artists", "Albums"],
+            titles: ["월", "화", "수", "목", "금", "토", "일"],
             index: 1,
             options: [.backgroundColor(UIColor(red:0.11, green:0.12, blue:0.13, alpha:1.00)),
+                      .indicatorViewBackgroundColor(UIColor(red:1, green:1, blue:1, alpha:1.00)),
                       .titleColor(.white),
-                      .indicatorViewBackgroundColor(UIColor(red:0.11, green:0.12, blue:0.13, alpha:1.00)),
                       .selectedTitleColor(UIColor(red:0.97, green:0.00, blue:0.24, alpha:1.00)),
-                      .cornerRadius(0.0),
+                      .cornerRadius(25.0),
                       .titleFont(UIFont(name: "HelveticaNeue", size: 16.0)!),
                       .selectedTitleFont(UIFont(name: "HelveticaNeue", size: 16.0)!),
-                      .bouncesOnChange(false),
-                      .panningDisabled(true)])
+                      .bouncesOnChange(false)])
         view.addSubview(viewSegmentedControl)
 
         // Control 5: Adding custom subview to Indicator
