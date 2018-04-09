@@ -68,7 +68,8 @@ class ViewController: UIViewController {
                       .cornerRadius(25.0),
                       .titleFont(UIFont(name: "HelveticaNeue", size: 16.0)!),
                       .selectedTitleFont(UIFont(name: "HelveticaNeue", size: 16.0)!),
-                      .bouncesOnChange(false)])
+                      .bouncesOnChange(false),
+                      .isSquare(true)])
         view.addSubview(viewSegmentedControl)
 
         // Control 5: Adding custom subview to Indicator

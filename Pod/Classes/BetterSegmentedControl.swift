@@ -149,6 +149,8 @@ import UIKit
                     cornerRadius = value
                 case let .bouncesOnChange(value):
                     bouncesOnChange = value
+                case let .isSquare(value):
+                    isSquare = value
                 }
             }
         }
@@ -249,6 +251,10 @@ import UIKit
         didSet {
             titleLabels.forEach { $0.layer.borderColor = titleBorderColor.cgColor }
         }
+    }
+    //
+    @IBInspectable public fileprivate(set) var isSquare: Bool = false {
+        didSet { setNeedsLayout() }
     }
     
     // MARK: - Private properties
@@ -397,11 +403,18 @@ import UIKit
     
     // MARK: Helpers
     fileprivate func elementFrame(forIndex index: UInt) -> CGRect {
-        let elementWidth = (width - totalInsetSize) / CGFloat(titleLabelsCount)
-        return CGRect(x: CGFloat(index) * elementWidth + indicatorViewInset,
+        let elementHeight = height - totalInsetSize
+        let unitWidth = (width - totalInsetSize) / CGFloat(titleLabelsCount)
+        let elementWidth = isSquare ? elementHeight : unitWidth
+        var startingOffset: CGFloat {
+            guard self.isSquare else { return 0 }
+            return (unitWidth - elementWidth) / 2
+        }
+
+        return CGRect(x: CGFloat(index) * unitWidth + indicatorViewInset + startingOffset,
                       y: indicatorViewInset,
                       width: elementWidth,
-                      height: height - totalInsetSize)
+                      height: elementHeight)
     }
     fileprivate func nearestIndex(toPoint point: CGPoint) -> UInt {
         let distances = titleLabels.map { abs(point.x - $0.center.x) }
