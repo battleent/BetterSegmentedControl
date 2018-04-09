@@ -12,6 +12,8 @@ DEPENDENCIES:
   - BetterSegmentedControl (from `../`)
   - Nimble (= 7.0.2)
   - Quick (= 1.2.0)
+  - RxCocoa (~> 4.0)
+  - RxSwift (~> 4.0)
 
 EXTERNAL SOURCES:
   BetterSegmentedControl:
@@ -24,6 +26,6 @@ SPEC CHECKSUMS:
   RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
   RxSwift: e49536837d9901277638493ea537394d4b55f570
 
-PODFILE CHECKSUM: b0f10547442078bb964d4d147e0dc3ebe685ae09
+PODFILE CHECKSUM: 514f36837d2bc2db66f3edb996482d2855e65f39
 
 COCOAPODS: 1.4.0

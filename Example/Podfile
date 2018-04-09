@@ -3,6 +3,9 @@ use_frameworks!
 
 target 'BetterSegmentedControl_Example' do
   pod 'BetterSegmentedControl', :path => '../'
+
+  pod 'RxSwift',    '~> 4.0'
+  pod 'RxCocoa',    '~> 4.0'
 end
 
 target 'BetterSegmentedControl_Tests' do
