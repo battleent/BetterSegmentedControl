@@ -168,7 +168,7 @@ import UIKit
             return layer.cornerRadius
         }
         set {
-            layer.cornerRadius = newValue
+//            layer.cornerRadius = newValue
             indicatorView.cornerRadius = newValue - indicatorViewInset
             titleLabels.forEach { $0.layer.cornerRadius = indicatorView.cornerRadius }
         }
