@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 import BetterSegmentedControl
 
 class ViewController: UIViewController {
     
     @IBOutlet weak var control1: BetterSegmentedControl!
     @IBOutlet weak var control3: BetterSegmentedControl!
+    var disposeBag = DisposeBag()
     
     // MARK: - Examples
     override func viewDidLoad() {
@@ -60,7 +63,7 @@ class ViewController: UIViewController {
         let viewSegmentedControl = BetterSegmentedControl(
             frame: CGRect(x: 0.0, y: 332.0, width: view.bounds.width, height: 50.0),
             titles: ["월", "화", "수", "목", "금", "토", "일"],
-            index: 1,
+            index: 0,
             options: [.backgroundColor(UIColor(red:0.11, green:0.12, blue:0.13, alpha:1.00)),
                       .indicatorViewBackgroundColor(UIColor(red:1, green:1, blue:1, alpha:1.00)),
                       .titleColor(.white),
@@ -71,6 +74,16 @@ class ViewController: UIViewController {
                       .bouncesOnChange(false),
                       .isSquare(true)])
         view.addSubview(viewSegmentedControl)
+
+        Observable.just(1)
+            .bind(to: viewSegmentedControl.rx.value)
+            .disposed(by: disposeBag)
+
+        viewSegmentedControl.rx.value
+            .subscribe(onNext: {
+                print("DEBUG::: \($0) value changed!")
+            })
+            .disposed(by: disposeBag)
 
         // Control 5: Adding custom subview to Indicator
         let indicatorControl = BetterSegmentedControl(
