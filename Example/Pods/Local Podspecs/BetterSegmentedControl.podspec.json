@@ -18,5 +18,13 @@
   },
   "requires_arc": true,
   "source_files": "Pod/Classes/**/*",
-  "frameworks": "UIKit"
+  "frameworks": "UIKit",
+  "dependencies": {
+    "RxSwift": [
+      ">= 4.0.0"
+    ],
+    "RxCocoa": [
+      ">= 4.0.0"
+    ]
+  }
 }
